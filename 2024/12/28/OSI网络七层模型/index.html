@@ -13,15 +13,15 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="目录 OSI参考模型 网络七层模型 网络五层模型与七层模型的区别 总结   网络通信实现   一. OSI参考模型(一)网络七层模型​		OSI（Open System Interconnection开放系统互连）七层网络模型称为开放式系统互联参考模型 ，是一种逻辑上的定义规范，把网络从逻辑上分为了7层。每一层都有相关、相对应的物理设备，比如路由器，交换机。 　　OSI七层模型是一种框架性的设计方">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20241228175911921.png">
-<meta property="og:image" content="c:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20241228190033053.png">
-<meta property="og:image" content="c:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20241228192459468.png">
+<meta property="og:image" content="http://example.com/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/ytw.png">
+<meta property="og:image" content="http://example.com/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/IP%E7%AB%AF%E5%8F%A3.png">
+<meta property="og:image" content="http://example.com/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B.png">
 <meta property="article:published_time" content="2024-12-28T09:07:38.259Z">
-<meta property="article:modified_time" content="2024-12-28T11:38:58.066Z">
+<meta property="article:modified_time" content="2024-12-28T13:12:55.848Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="计算机网络通信">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20241228175911921.png">
+<meta name="twitter:image" content="http://example.com/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/ytw.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -115,19 +115,16 @@
 <h6 id="以太网协议："><a href="#以太网协议：" class="headerlink" title="以太网协议："></a><em><strong>以太网协议：</strong></em></h6><p>早期 , 公司都有自己的分组方式，后来形成了统一的标准，即以太网协议;</p>
 <p>　　ethernet规定</p>
 <ul>
-<li><p>一组电信号构成一个数据包，叫做‘帧’</p>
-</li>
-<li><p>每一数据帧分成：报头head和数据data两部分</p>
-</li>
-<li><p><img src="C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20241228175911921.png" alt="image-20241228175911921"></p>
-</li>
+<li>一组电信号构成一个数据包，叫做‘帧’</li>
+<li>每一数据帧分成：报头head和数据data两部分</li>
+<li><img src="/./OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/ytw.png" alt="image-20241228175911921"></li>
 </ul>
 <h6 id="mac地址："><a href="#mac地址：" class="headerlink" title="mac地址："></a><em><strong>mac地址</strong></em>：</h6><p>　　　　head中包含的源和目标地址由来：ethernet规定接入internet的设备都必须具备网卡，发送端和接收端的地址便是指网卡的地址，即mac地址</p>
 <p>　　　　mac地址：每块网卡出厂时都被烧制上一个世界唯一的mac地址，长度为48位2进制，通常由12位16进制数表示（前六位是厂商编号，后六位是流水线号）</p>
 <p>​		<strong>3. 网络层</strong>：数据路由和分组传输；引入一套新的地址用来区分不同的广播域／子网，这套地址即网络地址。</p>
 <p>​		<strong>4.传输层</strong>：建立端口到端口的通信；网络层的ip区分子网，以太网层的mac帮我们找到主机，那如何标识这台主机上的应用程序？答案就是端口，<strong>端口</strong>即应用程序与网卡关联的编号。</p>
 <p>端口范围：0-65535，系统占用的端口：0-1023</p>
-<p><img src="C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20241228190033053.png" alt="image-20241228190033053"></p>
+<p><img src="/./OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/IP%E7%AB%AF%E5%8F%A3.png" alt="image-20241228190033053"></p>
 <table>
 <thead>
 <tr>
@@ -149,7 +146,7 @@
 <p>​	<strong>6.表示层：</strong>位于应用层下方，负责处理数据的表示、转换、加密，让不同系统能有效通信。</p>
 <p>​	<strong>7.会话层：</strong>处传输层和表示层间，建立、管理、中止对话。对应主机进程，指本地主机与远程主机正在进行的会话。</p>
 <h4 id="二-区别"><a href="#二-区别" class="headerlink" title="(二).区别:"></a>(二).区别:</h4><p>​	网络五层模型和七层模型都用于解析网络通信，<strong>七层模型</strong>由下至上分为：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。<strong>五层模型</strong>把七层模型的会话层、表示层归并入应用层，自下而上是物理层、数据链路层、网络层、传输层、应用层。</p>
-<p><img src="C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20241228192459468.png" alt="image-20241228192459468"></p>
+<p><img src="/./OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B.png" alt="image-20241228192459468"></p>
 <h4 id="三-总结："><a href="#三-总结：" class="headerlink" title="(三)总结："></a>(三)总结：</h4><p>​	OSI七层就是涉及各种协议，加工一些格式来控制通信流程到的方式。</p>
 <h3 id="二-网络通信实现"><a href="#二-网络通信实现" class="headerlink" title="二.网络通信实现"></a>二.网络通信实现</h3><p>实现网络通信，每台主机需具备四点</p>
 <ul>
@@ -181,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/28/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/" data-id="cm586enz900017gv96hn54w3n" data-title="OSI网络七层模型" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/28/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/" data-id="cm587hc3p0000cgv967w01vy5" data-title="OSI网络七层模型" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
