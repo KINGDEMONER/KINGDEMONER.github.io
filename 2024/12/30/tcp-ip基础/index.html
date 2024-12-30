@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>tcp/ip基础 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[TOC] 一.tcp&#x2F;ip的由来2次世界大战后，美苏冷战，美国国防部想开发一个在恶劣情况下两台计算机仍然可以互相通讯的网络;1969，阿帕网主要用于军事，同时，民间机构也在研究自己专属的网络，当民间的网络分支越来越多，想法萌生： 将小的局域网扩大，互相通讯。1972，华盛顿召开会议，决定制定一套通用的网络通讯协议；1974，美国国防部推出tcp&#x2F;ip的通讯协议，免费共享出来，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tcp&#x2F;ip基础">
+<meta property="og:url" content="http://example.com/2024/12/30/tcp-ip%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[TOC] 一.tcp&#x2F;ip的由来2次世界大战后，美苏冷战，美国国防部想开发一个在恶劣情况下两台计算机仍然可以互相通讯的网络;1969，阿帕网主要用于军事，同时，民间机构也在研究自己专属的网络，当民间的网络分支越来越多，想法萌生： 将小的局域网扩大，互相通讯。1972，华盛顿召开会议，决定制定一套通用的网络通讯协议；1974，美国国防部推出tcp&#x2F;ip的通讯协议，免费共享出来，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/TCP.OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://example.com/tcpip%E6%A8%A1%E5%9E%8B.png">
+<meta property="article:published_time" content="2024-12-30T09:30:02.000Z">
+<meta property="article:modified_time" content="2024-12-30T12:13:03.503Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="base">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/TCP.OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-tcp-ip基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/30/tcp-ip%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2024-12-30T09:30:02.000Z" itemprop="datePublished">2024-12-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      tcp/ip基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h4 id="一-tcp-ip的由来"><a href="#一-tcp-ip的由来" class="headerlink" title="一.tcp&#x2F;ip的由来"></a>一.tcp&#x2F;ip的由来</h4><p>2次世界大战后，美苏冷战，美国国防部想开发一个在恶劣情况下两台计算机仍然可以互相通讯的网络;<br>1969，阿帕网主要用于军事，同时，民间机构也在研究自己专属的网络，当民间的网络分支越来越多，想法萌生： <strong>将小的局域网扩大，互相通讯</strong>。<br>1972，华盛顿召开会议，决定制定一套通用的网络通讯协议；<br>1974，美国国防部推出tcp&#x2F;ip的通讯协议，免费共享出来，开源。<br>慢慢的，民间机构也使用tcp&#x2F;ip协议，渐渐形成了英特网</p>
+<h4 id="二-tcp-ip是什么？"><a href="#二-tcp-ip是什么？" class="headerlink" title="二.tcp&#x2F;ip是什么？"></a>二.tcp&#x2F;ip是什么？</h4><p>TCP&#x2F;IP（传输控制协议&#x2F;网间协议）是一种网络通信协议，它规范了网络上的所有通信设备，尤其是一个<strong>主机与另一个主机之间的数据往来格式以及传送方式</strong>。</p>
+<p>TCP&#x2F;IP 是利用IP进行通信时所必须用到的协议群的统称，它不是一个独立的协议，而是一组协议（tcp[传输控制协议]，ip[Internet协议]，udp[用户数据包协议]，arp[地址解析协议]，rarp[反地址解析协议]等协议）。TCP&#x2F;IP协议族提供了点对点的连结机制，并且将传输数据帧的封装、寻址、传输、路由以及接收方式，都予以标准化。</p>
+<h4 id="三-TCP-IP分层架构"><a href="#三-TCP-IP分层架构" class="headerlink" title="三.TCP&#x2F;IP分层架构"></a>三.TCP&#x2F;IP分层架构</h4><p>TCP&#x2F;IP协议与七层ISO模型的对应关系，大致如下图所示：</p>
+<p><img src="/./TCP.OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B.png" alt="image-20241230180818018"></p>
+<p>TCP&#x2F;IP协议是Internet互联网最基本的协议，一定程度上参考了七层ISO模型。OSI模型共有七层，但是这显然是有些复杂的，在TCP&#x2F;IP协议中，七层被简化为了四个层次。TCP&#x2F;IP模型中的各种协议，依其功能不同，被分别归属到这四层之中，常被视为是简化过后的七层OSI。</p>
+<ul>
+<li><strong>应用层</strong>：为网络应用提供服务，如HTTP用于网页浏览、FTP用于文件传输、SMTP用于邮件发送等.</li>
+<li><strong>传输层</strong>：主要有TCP和UDP协议。TCP提供可靠的、面向连接的数据传输服务；UDP提供无连接、不可靠但高效的数据传输服务，适用于实时性要求高的应用.</li>
+<li><strong>网络层</strong>：核心是IP协议，负责为数据包选择路由，将数据包从源地址传输到目的地址。此外还有ARP、RARP、ICMP等协议，分别用于地址解析和网络控制等功能.</li>
+<li><strong>网络接口层</strong>：负责数据帧的发送和接收，涉及实际的网络硬件和链路，如以太网、Wi-Fi等.</li>
+</ul>
+<h4 id="四-协议基础"><a href="#四-协议基础" class="headerlink" title="四. 协议基础"></a>四. 协议基础</h4><ul>
+<li><strong>IP协议</strong>：为网络中的设备分配唯一的IP地址，进行数据包的路由、分片和重组，使数据能够在不同网络间传输.</li>
+<li><strong>TCP协议</strong>：在IP协议基础上，通过建立连接、数据传输、流量控制和拥塞控制等机制，确保数据准确无误地按顺序从源地址传输到目的地址.</li>
+<li><strong>UDP协议</strong>：无连接、不可靠的传输层协议，不保证数据包的到达顺序和正确性，但具有传输速度快的特点，适用于实时视频、音频传输和网络游戏等对实时性要求高的场景.</li>
+</ul>
+<h4 id="五-数据封装与解封装"><a href="#五-数据封装与解封装" class="headerlink" title="五. 数据封装与解封装"></a>五. 数据封装与解封装</h4><p>数据发送时，从应用层开始依次向下封装，每层添加相应的头部或尾部信息，形成最终的数据包在网络中传输；接收方则从网络接口层开始依次向上解封装，提取出原始数据.</p>
+<p><img src="/./tcpip%E6%A8%A1%E5%9E%8B.png" alt="image-20241230195457409"></p>
+<h4 id="六-地址解析"><a href="#六-地址解析" class="headerlink" title="六.地址解析"></a>六.地址解析</h4><p>​	包括域名解析和ARP解析。域名解析将域名转换为对应的IP地址，以便在网络中找到目标设备；ARP解析则用于将IP地址转换为MAC地址，以实现数据链路层的通信.</p>
+<h4 id="七-tcp-ip总结"><a href="#七-tcp-ip总结" class="headerlink" title="七.tcp&#x2F;ip总结"></a>七.tcp&#x2F;ip总结</h4><p>通俗讲，tcp&#x2F;ip将计算机通讯划分成四个层次，并规定了每个层次干什么有什么规定，它让不同网络设备互联，确保数据准确传输，支撑多样网络应用，推动互联网发展。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/30/tcp-ip%E5%9F%BA%E7%A1%80/" data-id="cm5b03f9i0001tkv98mt55jtx" data-title="tcp/ip基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/base/" rel="tag">base</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/12/28/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">OSI网络七层模型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/base/" rel="tag">base</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" rel="tag">计算机网络通信</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" style="font-size: 10px;">计算机网络通信</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/30/tcp-ip%E5%9F%BA%E7%A1%80/">tcp/ip基础</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/28/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/">OSI网络七层模型</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/22/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
