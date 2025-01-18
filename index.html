@@ -69,9 +69,121 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-IP基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-常见互联网协议" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/12/31/IP%E5%9F%BA%E7%A1%80/" class="article-date">
+    <a href="/2025/01/18/%E5%B8%B8%E8%A7%81%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/" class="article-date">
+  <time class="dt-published" datetime="2025-01-18T06:34:44.000Z" itemprop="datePublished">2025-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/18/%E5%B8%B8%E8%A7%81%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/">常见互联网协议</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h4 id="一-http概念"><a href="#一-http概念" class="headerlink" title="一.http概念"></a>一.http概念</h4><p>定义：</p>
+<p>http(超文本传输)协议: 是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。</p>
+<p>概述：</p>
+<p>HTTP是一个<strong>客户端终端</strong>（用户）和<strong>服务器端</strong>（网站）<strong>请求和应答的标准</strong>（TCP）。通过使用网页浏览器、网络爬虫或者其它的工具，客户端发起一个HTTP请求到服务器上指定端口（默认端口为80）。我们称这个客户端为<strong>用户代理程序</strong>（user agent）。应答的服务器上存储着一些资源，比如HTML文件和图像。我们称这个应答服务器为<strong>源服务器</strong>（origin server）。在用户代理和源服务器中间可能存在多个“中间层”，比如代理服务器、网关或者隧道（tunnel）。</p>
+<p>HTTP协议中，并没有规定必须使用它或它支持的层，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。所以其在TCP&#x2F;IP协议族使用TCP作为其传输层。</p>
+<h4 id="二-HTTP工作原理："><a href="#二-HTTP工作原理：" class="headerlink" title="二.HTTP工作原理："></a>二.HTTP工作原理：</h4><ol>
+<li>客户端与服务器建立连接：一个HTTP客户端，通常是浏览器，与Web服务器的HTTP端口建立一个TCP套接字连接。</li>
+<li>发送HTTP请求：通过TCP套接字，客户端向Web服务器发送一个文本的请求报文。</li>
+<li>服务器接受请求并返回HTTP响应：Web服务器解析请求，定位请求资源。服务器将资源复本写到TCP套接字，由客户端读取。</li>
+<li>释放连接TCP连接：若connection 模式为close，则服务器主动关闭TCP连接，客户端被动关闭连接，释放TCP连接；若connection 模式为keepalive，则该连接会保持一段时间，在该时间内可以继续接收请求;</li>
+<li>客户端浏览器解析HTML内容：<ul>
+<li>解析状态行，查看表明请求是否成功的状态代码；</li>
+<li>解析每一个响应头，响应头告知以下为若干字节的HTML文档和文档的字符集</li>
+<li>户端浏览器读取响应数据HTML，根据HTML的语法对其进行格式化，并在浏览器窗口中显示。</li>
+</ul>
+</li>
+<li>客户端与服务器关闭连接。</li>
+</ol>
+<h4 id="三-HTTP请求"><a href="#三-HTTP请求" class="headerlink" title="三.HTTP请求"></a>三.HTTP请求</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST /test.php HTTP/1.1               //请求行</span><br><span class="line">HOST：www.test.com                 //请求头--HOST代表请求主机地址</span><br><span class="line">User-Agent：Mozilla/5.0 （windows NT 6.1；rv：15.0）Gecko/20100101 Firefox/15.0  </span><br><span class="line">                //空白行，代表请求头结束 ，User-Agent代表浏览器的标识</span><br><span class="line">Username=admin&amp;password=admin       //请求正文正文是可选的，它最常出现在POST请求方式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>请求方法</strong></p>
+<ol>
+<li>TTP1.0 定义了三种请求方法： GET, POST 和 HEAD方法。<ul>
+<li>GET	请求指定的页面信息，并返回实体主体。</li>
+<li>HEAD	类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头，可用于检查某一资源在向其提交GET请求前是否存在</li>
+<li>POST	向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和&#x2F;或已有资源的修改。：POST方法也与GET方法相似，但最大的区别在于，GET方法没有请求内容，而POST是有请求内容的。</li>
+</ul>
+</li>
+<li>HTTP1.1 新增了五种请求方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNECT 方法。<ul>
+<li>PUT：PUT方法用于请求服务器把请求中的实体存储在请求资源下，如果请求资源已经在服务器中存在，那么将会用此请求中的数据替换原先的数据。向服务器上传指定的资源。</li>
+</ul>
+</li>
+</ol>
+<p>四.HTTP响应</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK       //响应行HTTP版本（HTTP/1.1）、状态码（200）以及消息“OK”。</span><br><span class="line"></span><br><span class="line">Date: Sun, 19 Jan, 2025 17:11:04 GMT    //响应头 由服务器向客户端发送。</span><br><span class="line">Server: bfe/1.0.8.9</span><br><span class="line">Content-Length: 2605  //正文长度</span><br><span class="line">Content-Type: application/javascript //响应正文媒体类型</span><br><span class="line">Cache-Control: max-age=315360000</span><br><span class="line">Expires: Fri, 13 Jun 2025 09:54:00 GMT  //什么时候文档过期</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Set-Cookie: H_PS_PSSID=2022_1438_1944_1788; path=/;   //设置</span><br><span class="line">domain=test.com</span><br><span class="line">Connection: keep-alive</span><br><span class="line">					      //空白行，代表响应头结束</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;&lt;title&gt; Index.html &lt;/title&gt;&lt;/head&gt;  //响应正文消息主题</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>拦截http请求的分析点</strong></p>
+<p><img src="/./http.png" alt="image-20250118171748534"></p>
+<h4 id="四-HTTP报文结构"><a href="#四-HTTP报文结构" class="headerlink" title="四.HTTP报文结构"></a>四.HTTP报文结构</h4><p>HTTP报文由从客户机到服务器的请求和从服务器到客户机的响应构成：</p>
+<ul>
+<li>请求：由请求行，请求头，请求体组成</li>
+<li>请求行：包含请求方法、路径、版本号，请求头为多个key-value数据，请求正文包含一些请求的数据</li>
+<li>响应：由响应行，响应头，响应体组成</li>
+<li>响应行：包含状态码，状态码描述，版本号，响应头为多个key-value数据，响应正文包含一些响应的数据</li>
+<li><img src="/./bwgs.png" alt="image-20250118171748534"></li>
+</ul>
+<h4 id="五-HTTPS协议"><a href="#五-HTTPS协议" class="headerlink" title="五.HTTPS协议"></a>五.HTTPS协议</h4><p>HTTPS协议是在HTTP的基础上增加了一个SSL外壳，HTTPS运行在SSL上，SSL运行在TCP上，对数据的加密工作就是在SSL上完成的。</p>
+<p>其保证安全性的做法是通过证书验证和对信息<strong>混合加密</strong>的方式：</p>
+<blockquote>
+<p>混合加密技术：结合对称加密与非对称加密<br>服务端生成私钥，再通过私钥生成公钥，然后将公钥放在证书中颁发给客户端<br>使用公钥和私钥以非对称方式加密生成密钥<br>客户端接下来的传输数据中，都会用密钥以对称方式对信息加密，再传输给服务端</p>
+</blockquote>
+<p>提到的公钥和私钥，我们规定用公钥加密的内容必须用私钥才能解开；同样，私钥加密的内容只有公钥能解开。所以HTTPS传输数据是用被密钥加密的密文和用公钥加密的私钥来保证数据安全的</p>
+<h4 id="六-状态码"><a href="#六-状态码" class="headerlink" title="六.状态码"></a>六.状态码</h4><p>1.五种状态码：</p>
+<ul>
+<li>1xx：信息提示，表示请求已被成功接收，继续处理。</li>
+<li>2xx：请求被成功提交。</li>
+<li>3xx：客户端被重定向到其他资源。</li>
+<li>4xx：客户端错误状态码，格式错误或者不存在资源。</li>
+<li>5xx：描述服务器内部错误。</li>
+</ul>
+<p>2.常见的状态码描述如下：</p>
+<ul>
+<li>200：客户端请求成功，是最常见的状态。</li>
+<li>302：重定向。</li>
+<li>404：请求资源不存在，是最常见的状态。</li>
+<li>400：客户端请求有语法错误，不能被服务器所理解。</li>
+<li>401：请求未经授权。</li>
+<li>403：服务器收到请求，但是拒绝提供服务。</li>
+<li>500：服务器内部错误，是最常见的状态。</li>
+<li>503：服务器当前不能处理客户端的请求。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/18/%E5%B8%B8%E8%A7%81%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/" data-id="cm61zvnnr000awwv92nmadz6r" data-title="常见互联网协议" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http-https/" rel="tag">http&#x2F;https</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-tcp-ip基础/IP基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/31/tcp-ip%E5%9F%BA%E7%A1%80/IP%E5%9F%BA%E7%A1%80/" class="article-date">
   <time class="dt-published" datetime="2024-12-31T13:54:53.000Z" itemprop="datePublished">2024-12-31</time>
 </a>
     
@@ -83,7 +195,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/12/31/IP%E5%9F%BA%E7%A1%80/">IP基础</a>
+      <a class="p-name article-title" href="/2024/12/31/tcp-ip%E5%9F%BA%E7%A1%80/IP%E5%9F%BA%E7%A1%80/">IP基础</a>
     </h1>
   
 
@@ -243,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/31/IP%E5%9F%BA%E7%A1%80/" data-id="cm5dmh1mc0000k4v95qgs2rsn" data-title="IP基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/31/tcp-ip%E5%9F%BA%E7%A1%80/IP%E5%9F%BA%E7%A1%80/" data-id="cm61zvnnp0004wwv9hqhc19yo" data-title="IP基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -305,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/30/tcp-ip%E5%9F%BA%E7%A1%80/tcp-ip%E5%9F%BA%E7%A1%80/" data-id="cm5dmh1mp0004k4v94g9lgdh1" data-title="tcp/ip基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/30/tcp-ip%E5%9F%BA%E7%A1%80/tcp-ip%E5%9F%BA%E7%A1%80/" data-id="cm61zvnnn0002wwv97tlye8eq" data-title="tcp/ip基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -421,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/28/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/" data-id="cm5dmh1mn0003k4v90lr03hkt" data-title="OSI网络七层模型" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/28/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/" data-id="cm61zvnnm0001wwv99z8v1fil" data-title="OSI网络七层模型" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -474,7 +586,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/22/hello-world/" data-id="cm5dmh1mi0001k4v98t7tauz6" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/22/hello-world/" data-id="cm61zvnnj0000wwv92huq6pf8" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -499,7 +611,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip%E5%9F%BA%E7%A1%80/" rel="tag">tcp&#x2F;ip基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" rel="tag">计算机网络通信</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/" rel="tag">http&#x2F;https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip%E5%9F%BA%E7%A1%80/" rel="tag">tcp&#x2F;ip基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" rel="tag">计算机网络通信</a></li></ul>
     </div>
   </div>
 
@@ -509,7 +621,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/tcp-ip%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">tcp/ip基础</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" style="font-size: 10px;">计算机网络通信</a>
+      <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/http-https/" style="font-size: 10px;">http/https</a> <a href="/tags/tcp-ip%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">tcp/ip基础</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" style="font-size: 10px;">计算机网络通信</a>
     </div>
   </div>
 
@@ -518,7 +630,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li></ul>
     </div>
   </div>
 
@@ -531,7 +643,11 @@
       <ul>
         
           <li>
-            <a href="/2024/12/31/IP%E5%9F%BA%E7%A1%80/">IP基础</a>
+            <a href="/2025/01/18/%E5%B8%B8%E8%A7%81%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/">常见互联网协议</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/31/tcp-ip%E5%9F%BA%E7%A1%80/IP%E5%9F%BA%E7%A1%80/">IP基础</a>
           </li>
         
           <li>
